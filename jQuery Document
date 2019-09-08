@@ -1,0 +1,1145 @@
+İçindekiler
+-----------------------------------------------------
+
+1- Nesneleri Seçip Metod Kullanmak
+2- CSS Metodu ile Nitelik Atama
+3- Fonksiyon Sınıfı 
+4- Click Metodu Kullanımı 
+5- Trim ile Boşluk Kaldırma  
+6- Live ve Append Metodu  
+7- Last Filtresi 
+8- GetJSON Fonksiyonu
+9- Each Döngü Metodu
+10- Remove 	Metodu
+11- Toggle Metodu
+12- Slide Metodu
+13- Hover Metodu
+14- Size Metodu
+15- Fade Metodu
+16- Eq filtresi ve Eq Metodu
+17- Animate Metodu 
+18- Parent Metodu
+19- Serialize Metodu
+20- HasClass Metodu
+21- Change Metodu
+22- Html Metodu
+23- Text Metodu  
+24- Val Metodu  
+25- ToggleClass Metodu 
+26- Prepend Metodu 
+27- Focus Metodu 
+28- Clone Metodu 
+29- Next Metodu 
+30- Double Click Metodu 
+31- Checked Filtresi 
+32- Width Metodu 
+33- Height Metodu 
+34- Load Metodu 
+35- Error Metodu
+36- One Metodu
+37- Submit Metodu 
+38- Ajax Post Metodu ile Veri Çekme 
+39- Ajax Post Metodu ile Veri Yazma 
+40- Ajax Get Metodu
+41- Ajax Metodu 
+42- Stop Metodu 
+43- :Contains Filtresi
+44- isNumeric Metodu
+
+-----------------------------------------------------
+
+
+1- Nesneleri Seçip Metod Kullanmak
+-----------------------------------------------------
+
+* Önce html nesnelerinden birini seçeriz
+* Sonra da buraya uygulamak istediğimiz metodu yazarız
+* Birden fazla nesne de seçebiliriz 
+* Nesne seçiminde Dolar , Metod uygulamasında Nokta işareti kullanılır
+
+        <script type="text/javascript" src="/jQueryEğitimi/js/jquery-3.3.1.min.js"></script>
+        <script type="text/javascript">
+                 
+            $(function(){
+                $("p,a,div.furkan,div#yıldız").hide(3000);
+                //Seçilen nesneleri 3 saniye içinde görünmez hale getirir
+		//Gizleneni tekrar göstermek için .show() metodu kullanılır
+            });
+       
+        </script>
+
+	<body>
+        	<p>JQuery Eğitimine Başlıyoruz</p>
+        	<a href="#">Ayrıntılı Eğitim İçin Sitemi Ziyaret Edin</a>
+        	<div class="furkan">Furkan</div>
+       	 	<div id="yıldız">Yıldız</div>
+    	</body>
+
+
+2- CSS Metodu ile Nitelik Atama
+-----------------------------------------------------
+
+* JQueryde CSS yazmamızı sağlayan metoddur
+* Paragrafımızı seçip yazı rengini değiştirelim 
+* Yazının altını çizelim
+* Bir de arka planın rengini değiştirelim 
+* a nesnesine bir nitelik atayıp href ile siteye gidelim
+* Son olarak yazımızın rengini öğrenip alert olarak yazdıralım
+
+	<script type="text/javascript">    
+            
+      $(function(){
+         $("p").css({
+            "color":"red",
+            "text-decoration":"overline",
+            "background-color":"black"
+         });
+		
+			$("a").attr("href","http://www.frknyldz.com")
+            alert($("p").css("color"));
+      });
+        
+   </script>
+
+	<body>
+      <p>JQuery Eğitimine Başlıyoruz</p>
+      <a href="#">Ayrıntılı Eğitim İçin Sitemi Ziyaret Edin</a>
+
+      <div class="furkan">Furkan</div>
+      <div id="yıldız">Yıldız</div>
+   </body>
+
+
+3- Fonksiyon Sınıfı 
+----------------------------------------------------
+
+* Kendi fonksiyonlarımızı yazabiliriz 
+* Bu fonksiyonlara birden fazla metod ekleyebiliriz 
+* Dışarıdan bu metodları çalıştırabilir hatta parametre gönderebiliriz
+
+	 <script type="text/javascript">
+           
+      $(function(){
+         $.FY ={
+            goster : function(){
+               alert("FY Sınıfından goster() metodu çalıştırıldı")
+            },
+
+            onayla : function(){
+               alert("FY Sınıfından onayla() metodu çalıştırıldı")
+            },
+
+            site : function(url,siteSahibi){
+               alert(url + " " + siteSahibi);
+            }
+         } 
+      });
+   
+   </script>
+
+
+    <body>
+        <input type="submit" onclick="$.FY.goster()"/>
+        <input type="submit" onclick="$.FY.onayla()"/>
+        <input type="submit" onclick="$.FY.site('www.frknyldz.com','Furkan YILDIZ')"/>
+    </body>
+
+
+4- Click Metodu Kullanımı 
+-----------------------------------------------------
+
+* Bir liste oluşturalım 
+* Bir de div oluşturalım
+* Listenin herangi bir elemanına tıklandığında  div kaybolsun
+
+
+   <script type="text/javascript" src="/jQueryEğitimi/js/jquery-3.3.1.min.js"></script>
+
+   <script type="text/javascript">  
+
+      $(function(){
+         $("ul.FY li").click(function(){
+            $("#alan").hide(3000);
+         });
+		});
+                       
+   </script>
+
+
+   <body>
+
+      <ul class="FY">
+         <li>1. ELEMAN</li>
+         <li>2. ELEMAN</li>
+         <li>3. ELEMAN</li>
+         <li>4. ELEMAN</li>
+      </ul>
+
+      <div id="alan"> Bu alan yok olacak ..</div>
+
+   </body>
+
+
+
+5- Trim ile Boşluk Kaldırma  
+-----------------------------------------------------
+
+* Bir girdi alanımız olsun 
+* Bu alanın boş bırakılmasını ve boşluk elemanını kabul etmemeliyiz
+
+ 
+   <script type="text/javascript" src="/jQueryEğitimi/js/jquery-3.3.1.min.js"></script>
+   <script type="text/javascript">
+               
+      $(function(){
+         $("button").click(function(){
+            var deger = $("input[name=deger]").val();
+            deger = $.trim(deger);
+                    
+            if(!deger){
+               alert("Boş Bırakmayınız!");
+            }
+         });
+
+      });
+                       
+   </script>
+
+   <body>
+      <input type="text" name="deger"/>
+		<button>Tıkla</button>  
+   </body>
+
+
+6- Live ve Append Metodu  
+-----------------------------------------------------
+
+* Normalde sayfaya sonradan dahil edilen alanlar için metodlar çalışmaz
+* Diyelim ki bir butona görev verdik , butona tıklandığında yeni bir buton oluşacak
+* Bu yeni oluşan butona tıklandığında yine yeni bir buton oluşmayacaktır 
+* Bu görevi sağlamak için yeni yeni elemana da görevin üstlendirilmesi için Live kullanılır
+* live metodunun içinde click , mouseover gibi fonksiyonlar ve bunların içinde de sınıf atama ,silme
+
+	<script type="text/javascript">
+      $(function(){
+         $("button").live("click",function(){
+            $(this).after('<button>Bana da Tıkla</button>')
+         });
+         
+			$("p").live({
+            click: function(){
+               $(this).after('<p>Buna da Tıkla</p>');
+            },
+                    
+				mouseover: function(){
+               $(this).addClass("deneme");
+            },
+           
+            mouseout: function(){
+               $(this).removeClass("deneme");
+            }
+         });
+
+         $("a").click(function(){
+            $("div#FY").append("<div>Burası Yeni Div</div>");
+         });
+      });
+                       
+   </script>
+
+   <style>
+      p.deneme{background-color: yellow}
+   </style>
+
+
+   <body>
+      <button>Tıkla</button>
+      <p class="deneme">Yazı</p>
+      <a href="">Hadi Buna da Tıkla</a>
+      <div id="FY"></div> 
+    </body>
+ 
+
+7- Last Filtresi 
+-----------------------------------------------------
+
+* Elimizde bir liste olsun 
+* Bu listenn son elemanına bir css bileşeni uygulamak istiyoruz
+* Adından da anlaşılacağı gibi son elemanı bulmak için last metodu kullanılmalı 
+
+
+	<script type="text/javascript">  
+
+      $(function(){
+         $("ul#FY li:last a").css("color","red");
+		});
+                       
+   </script>
+
+	<ul id="FY">
+      <li><a href="#">1. Tab</a></li>
+      <li><a href="#">2. Tab</a></li>
+      <li><a href="#">3. Tab</a></li>
+   </ul>
+
+
+8- GetJSON Fonksiyonu
+-----------------------------------------------------
+
+* Bu metod JSON formatındaki verileri almaya ve işlemeye yarar 
+* Örnek olarak facebook un graphlarını kullanabiliriz 
+
+   <script type="text/javascript" src="/jQueryEğitimi/js/jquery-3.3.1.min.js"></script>
+   <script type="text/javascript">
+               
+      $(function(){
+         $.getJSON("http://graph.facebook.com/furkanyildiz" , function(veri){
+            $("#sonuc").html('<strong>Kullanıcı Adı : </strong>' + veri.username + '<br/></strong>Kullanıcı Linki : </strong><a href="'+veri.link+'">'+veri.link+'</a>'); 
+			});
+      });
+                       
+   </script>
+
+   <body>
+      <div id="sonuc">Yükleniyor...</div>
+   </body>
+
+
+9- Each Döngü Metodu
+-----------------------------------------------------
+
+* Kullanışlı bir yapısı vardır 
+* Bir liste üzerinde örnek yapalım
+* Liste elemanlarında gezinip index numaralarını kullanı tekrar isimlendirme yapalım
+
+   <script type="text/javascript" src="/jQueryEğitimi/js/jquery-3.3.1.min.js"></script>
+   <script type="text/javascript">
+               
+      $(function(){
+         $("ul#liste li").each(function(index, element){
+         	$(this).text("Li -" + index);
+      	});  
+      });
+                       
+   </script>
+
+   <body>
+      <ul id="liste">
+      	<li><a href="#"> 1. Tab </a></li>
+         <li><a href="#"> 2. Tab </a></li>
+         <li><a href="#"> 3. Tab </a></li>
+         <li><a href="#"> 4. Tab </a></li>
+      </ul>
+   </body>
+
+
+10- Remove 	Metodu 
+-----------------------------------------------------
+
+* Hide metodundan farkı kaynaktan komple silmesidir
+* Metodu çalıştırdıktan sonra kaynak kodu incelediğimizde o alanı göremeyiz
+
+
+11- Toggle Metodu
+-----------------------------------------------------
+
+* Hide metodundan farkı gizlendiğinde alanını işgal etmemesi
+* Alan gizlendiğinde altındaki elementler onun yerine kayar
+
+	<script type="text/javascript">
+         
+	   $(function(){	
+			$("button").click(function(){
+				$("div.yazi").toggle();
+	  		 });
+	   });
+                       
+   </script>
+
+	<body>
+      <div class="yazi"> Gizlenecek Yazıdır... </div>
+		<button> Göster/Gizle </button>
+   </body>
+
+
+12- Slide Metodu
+-----------------------------------------------------
+
+* Slide metodu içinde slideUp,slideDown,slideToggle alt metodları vardır 
+* Genelde slideToggle kullanılır
+* Bunun normal Toggle dan farkı gizlenip açılırken saniye atayarak yavaş yavaş gerçekleştirilir 
+* Açık/Kapalı şeklinde switch gibi davranır
+
+	<script type="text/javascript">
+               
+	   $(function(){ 	
+			$("button").click(function(){
+				$("div.yazi").slideToggle(100);
+	  		 });
+	   });
+                       
+   </script>
+
+	<body>
+      <div class="yazi"> Gizlenecek Yazıdır... </div>
+		<button> Göster/Gizle </button>
+   </body>
+
+
+13- Hover Metodu
+-----------------------------------------------------
+
+* Seçtiğimiz bir elementin üzerinde mouse ile geldiğimizde farklı bir işlem yapabilmemizi sağlar
+* İki tane yazı oluşturalım 
+* Birini seçip onun üzerine geldiğimizde diğerini kaybedelim
+* Tabi mouse üzerinden çekildiğinde yazı geri gelmeli
+
+	<script type="text/javascript">
+               
+	   $(function(){
+			$("yazi1").hover(function(){
+				$("div.yazi2").hide();
+	  		 }, function(){
+				$("div.yazi2").show();
+			});
+	   });
+                       
+   </script>
+
+
+	<body>
+      <div class="yazi1"> Bu yazının üzerine gel.. </div>
+      <div class="yazi2"> Bu yazı gizlensin.. </div>
+   </body>
+
+
+
+
+14- Size Metodu
+-----------------------------------------------------
+
+* JavaScriptteki length metodunun aynısıdır
+* Bir elementten nesneden document içinde kaç tane olduğunu hesaplayabiliriz
+
+	<script type="text/javascript">
+               
+	   $(function(){    	
+			var toplamDiv = $("div").size();
+			alert(toplamDiv);
+	   });
+                       
+   </script>
+
+
+	<body>
+      <div class="yazi1"> yazı1 </div>
+      <div class="yazi2"> yazı2 </div>
+   </body>
+
+
+
+15- Fade Metodu
+-----------------------------------------------------
+
+* Toggle veya hide dan tek farkı kararıp gizlenmesi veya açılmasıdır 
+* FadeOut , fadeIn , fadeTo , fadeToggle alt metodları vardır 
+* Genelde açılıp kapanması için fadeToggle kullanılır 
+* FadeTo kullanılıp içine opacity yazılırsa tamamen kaybolmaz 
+
+
+	<script type="text/javascript">
+               
+	   $(function(){  	
+			$("button").click(function(){
+				$("div.yazi").fadeToggle();
+	  		 });
+	   });
+                       
+   </script>
+
+
+	<body>
+      <div class="yazi">  Yazı  </div>
+		<button> TIKLA </button>
+   </body>
+	
+
+16- Eq filtresi ve Eq Metodu
+-----------------------------------------------------
+
+* :eq girdiğimiz indis değerine sahip nesneyi seçer
+* Alt alta dizili li lerden 3. yü seçmek için li:eq(2) diyebiliriz
+
+
+	<script type="text/javascript">
+               
+	   $(function(){	
+			$ ( " ul  li : eq ( 2 ) " ) . css(" background-color " , " green ");
+			// Aynı şeyi metoduyla da yapabiliriz 
+			$ ( " ul li " ) . eq(4) . css ("background-color" , " green ");
+	   });
+                       
+   </script>
+
+	<body>
+      <ul>
+			<li> liste elemanı 1 </li>
+			<li> liste elemanı 2 </li>
+			<li> liste elemanı 3 </li>
+		</ul>
+   </body>
+	
+
+
+17- Animate Metodu 
+-----------------------------------------------------
+
+* Elimizde belli bir width , height  ve margin değerleri olan divimiz olsun 
+* Bu değerleri animate ile animasyon şeklinde değiştirebiliriz 
+* Bu değişikler için belli bir zaman aralığı da koyabiliriz 
+
+
+	<script type="text/javascript">
+               
+	   $(function(){	
+			$(".yazi").animate({
+				
+				"width" : "300px" ,
+
+			}, 2000).animate({
+
+				"height" : "300px" ,
+
+			}, 2000).animate({
+
+				"marginTop" : "300px" ,
+
+			}, 2000)
+	   
+	   });
+                       
+   </script>
+
+	<style type="text/css">
+		div.yazi {
+			padding : 20px ;
+			border : 5px solid #aaa ;
+			margin-bottom : 10px ;
+			cursor : pinter ;
+		}
+	</style>
+
+
+	<body>
+      <div class="yazi">  Yazı  </div>
+   </body>
+	
+
+
+
+18- Parent Metodu
+-----------------------------------------------------
+
+* Seçilen nesnenin bir üst nesnesini yani parentını bulmamıza yarar  
+* Liste elemanının içerisine button koyalım
+* Butona tıkladığımız nesnenin listesi komple yok olacak 
+
+	<script type="text/javascript">      
+
+	   $(function(){ 	
+			$("button").click(function(){
+				$(this).parent().remove();
+				// butonuna bastığım li yok oldu
+			});
+	   });
+                       
+   </script>
+
+	<body>
+      <ul>
+			<li> liste elemanı 1  
+				<button> Kaldır </button> 
+			</li>
+
+			<li> liste elemanı 2  
+				<button> Kaldır </button> 
+			</li>
+
+			<li> liste elemanı 3  
+				<button> Kaldır </button> 
+			</li>
+
+		</ul>
+	</body>
+
+
+
+19- Serialize Metodu
+-----------------------------------------------------
+
+* Bir form alanımız olduğunu düşünelim 
+* Bu alana girilen verileri belli bir formatta alabilmek için kullanırız
+* Butona bastığımızda id sine formdaki veriler  gelsin
+
+	<script type="text/javascript">
+               
+	   $(function(){	
+			$("button").click(function(e){
+				var deger = $("form#form1").serialize();
+				alert(deger);
+			});
+	   });
+                       
+   </script>
+
+
+	<body>
+
+	<form action = " "    id = "form1">
+		<table>
+			<tr>
+				<td> Kullanıcı Adı :</td>
+				<td> <input type ="text" name="kadi" /> </td>	
+			</tr>
+
+			<tr>
+				<td> E-Posta :</td>
+				<td>  <input type ="text" name="eposta" /></td>	
+			</tr>
+		
+			<tr>
+				<td> Şifre :</td>	
+				<td>  <input type ="password" name="sifre" /></td>
+			</tr>
+
+			<tr>
+				<td> Cinsiyet :</td>	
+				<td>
+
+					 <select name="cinsiyet">  
+						<option value = "Erkek"> Erkek </option> 
+						<option value = "Kadın"> Kadın </option>
+					</select>
+
+				</td>
+			</tr>
+
+			<tr>
+				<td> </td>	
+				<td> <button> Kayıt Ol </button></td>
+			</tr>
+		</table>
+	</form>
+
+	</body>
+
+
+20- HasClass Metodu
+-----------------------------------------------------
+
+* İçerisine girdiğimiz sınıfın olup olmadığını kontrol eden bir metoddur 
+
+	<script type="text/javascript">
+   
+	   $(function(){
+			if($("div").hasClass("yazi")){
+				alert(" Aranılan Class Divler İçerisinde Bulunuyor ... ");			
+			}
+	   });
+                       
+   </script>
+
+
+	<body>
+      <div class="yazi">  Yazı  </div>
+   </body>
+	
+
+21- Change Metodu
+-----------------------------------------------------
+
+* İki önceki örnekte formumuzun içinde selector vardı
+* İçinde kadın ve erkek seçenekleri bulunuyordu 
+* Mesela orada seçeneklerde değişiklik yaptığımızda bunu change metoduyla yakalayabiliriz 
+* Ona benzer bir örneği şehirlerle yapalım 
+* Değerdeğiştiğinde yeni eğeri alert edelim
+
+
+	<script type="text/javascript">
+               
+	   $(function(){
+			$("select").change(function(e){
+				var deger = $(this).val();
+				alert(deger);			
+			});
+	   });
+                       
+   </script>
+
+	<body>
+	<form action = " "    id = "form1">
+		<table>
+			<tr>
+				<td> Cinsiyet :</td>	
+				<td>
+					 <select name="şehirler">  
+						<option value = "İstanbul"> İstanbul </option> 
+						<option value = "Ankara"> Ankara </option>
+						<option value = "İzmir"> İzmir </option> 
+						<option value = "Adana"> Adana </option>
+						<option value = "Mersin"> Mersin </option> 
+						<option value = "Kütahya"> Kütahya </option>
+					</select>
+				</td>
+			</tr>
+		</table>
+	</form>
+	</body>
+
+
+22- Html Metodu
+-----------------------------------------------------
+
+* Seçtiğimiz nesnelerin değerlerini almamızı sağlar
+* Html metodu form elemanları hariç tüm elemanlardan değer almamızı sağlar
+* Bir div içerisinde yazılanları html bloklarıyla beraber almak istiyor olalım 
+
+	<script type="text/javascript">
+	   $(function(){
+			var deger = $('#div').html();
+			alert(deger);
+	   });   
+   </script>
+
+
+	<div id='divimiz' class='fy'>
+		bu <strong> deneme </strong> yazısı
+	</div> 
+
+
+23- Text Metodu  
+-----------------------------------------------------
+
+* Html ve Text'in farkı text metodunda html kodlarının alınmamasıdır
+* Bunun aynısını text() metoduyla yapacak olsaydık  ;
+
+<strong> ve </strong html tagları olduğu için görünmeyeceklerdi
+
+
+24- Val Metodu  
+-----------------------------------------------------
+
+* Val metodu ile yalnızca form elemanlarının değerlerini alabiliriz
+* Butona tıklandığında input içerisindeki veriyi yazdıralım 
+
+	$("button").click(function(e) {
+		alert($("input").val());
+	});
+
+
+25- ToggleClass Metodu 
+-----------------------------------------------------
+
+* Elimizde iki tane farklı özelliklere sahip class olsun 
+* Divimiz bunlardan birinin özelliğine sahip iken üzerine tıkladığımızda
+diğer classın özelliklerine bürünsün isteyelim 
+
+	<style> 
+		.class1 {background : green }
+		.class2 {background : blue }
+	</style>
+
+	<script>	
+		$(function(){
+			$("#divimiz").click(function(e){
+				$(this).toggleClass("class2");
+			});
+		});
+	</script>
+
+	<body>
+		<div class="class1"> Toggle Metodu Uygulanacak </div>
+	</body>
+
+
+26- Prepend Metodu 
+-----------------------------------------------------
+
+* Bir elementin başına bir nesne eklemek istediğimizde kullanırız
+* Append metodu ile sonuna ekleme yapıyorduk
+
+	$("#divimiz").prepend('<button>Tıkla</button>');
+
+
+27- Focus Metodu 
+-----------------------------------------------------
+
+* Focus odaklanmak demektir 
+* Input alanlarında imlecin otomatik olarak kutuya gelmesi için kullanılabilir
+* Hemen örnek kodumuzu yazalım 
+
+	$("input[name=kelime]").focus(function(){
+		alert(" Odaklanıldı ");
+	});
+
+	<input type="text" name="kelime"/>
+
+ 
+28- Clone Metodu 
+-----------------------------------------------------
+
+* Bir nesnenin birebir aynısının yaratılmasını sağlar
+* Bir divimizin hemen ardına aynı divimizi clonelayalım
+
+	var cloneDiv = $("#div").clone();
+	$("#div").after(cloneDiv);
+
+
+29- Next Metodu 
+-----------------------------------------------------
+
+* Seçilen nesneden sonraki nesne üzerinde işlem yapılmasını sağlar
+* Genelde nesnemizden sonraki , tanımlayamadığımız , bilmediğimiz 
+nesnelerde bulunabilmek için kullanırız
+* Elimizde bir input ve sonrasında paragraf nesnemiz olsun 
+* İnput üzerinden parafraftaki yazıyı gizleyelim
+
+	$("input#input").next().hide();
+
+* Nextin içerisinde özel olarak nesneyi de belirtebilirdik 
+
+	$("input#input").next("p").hide();
+
+
+30- Double Click Metodu 
+-----------------------------------------------------
+
+* Mouseumuzun çift tıklanması durumunda bir olay yaratmak istiyorsak
+bu metodu kullanabiliriz 
+* Örnek olarak bir divin arka plan rengini değiştirelim 
+
+	$("#divimiz").dblclick( function() {
+		$(this).css("background" , "yellow");
+	});
+
+
+31- Checked Filtresi 
+-----------------------------------------------------
+
+* CheckBox objesini kontrol etmemize yarayan bir filtredir
+* Elimizde bir checkbox tipinde bir input  ve buton olsun 
+* Butona tıklandığında boxı kontrol edip alert yayınlayalım
+
+	$(button).click( funtion() {
+		var deger = $("input [type=checkbox] : checked").val();
+		if(deger){
+			alert("Kutu işaretli ! ");
+		} else{
+			alert("Lütfen kutuyu işaretleyin ");
+		}
+	});
+
+* Filtreyi uyguladığımız için işaretli olan kutu geldi 
+
+
+32- Width Metodu 
+-----------------------------------------------------
+
+* Bir divin genişliğini bulmak ve atamak için kullanılır 
+* Divimizin genişliğini yazdıralım 
+
+	var genislik = $("#divimiz").width();
+	alert(genislik);
+
+* Şimdi de değiştirelim 
+
+	$("#divimiz").width(300);
+	var genislik = $("#divimiz").width();
+	alert(genislik);
+
+* Metodun içinde değeri vermemiz yeterli oldu
+* Daha kısa şekilde yapalım bunu 
+
+	var genislik = $("#divimiz").width(300).width();
+	alert(genislik);
+
+
+33- Height Metodu 
+-----------------------------------------------------
+
+* Bir divin yüksekliğini bulmak ve atamak için kullanılır 
+* Divimizin yüksekliğini yazdıralım 
+
+	var yükseklik = $("#divimiz").height();
+	alert(yükseklik);
+
+* Şimdi de değiştirelim 
+
+	$("#divimiz").height(300);
+	var yükseklik = $("#divimiz").height();
+	alert(yükseklik);
+
+* Metodun içinde değeri vermemiz yeterli oldu
+* Daha kısa şekilde yapalım bunu 
+
+	var yükseklik = $("#divimiz").height(300).height();
+	alert(yükseklik);
+
+
+34- Load Metodu 
+-----------------------------------------------------
+
+* Seçtiğimiz nesne sayfada yüklendiğinde çalışır 
+* Örnek olarak bir resmi verip yüklendiğinde alert yazdıralım 
+
+	$(".imgDosyası").load( function() {
+		alert(" Resim Yüklendi ");
+	});
+
+
+35- Error Metodu
+-----------------------------------------------------
+
+* Sayfada hata tespitleri için kullanılır
+* Mesela bir resim dosyası yüklenmesi sırasında hata oluştuysa
+bu metodla kaynak alanını yazdırabiliriz
+
+	$("img").error( function () {
+		alert(" hata : " , $(this).attr() );
+	}); 
+
+
+36- One Metodu
+-----------------------------------------------------
+
+* Olayın yalnızca bir defa yapılmasını sağlar 
+* Sitede sade bir kez çalışmasını beklediğimiz bir durum varsa 
+rahatlıkla kullanabiliriz 
+* Toggle metoduyla butona her bastığımızda nesnede durum değiştirebiliyorduk
+* Şimdi sadece bir defa değişsin istiyoruz diyelim 
+
+	$("buton").one("click" , function() {
+		$("p").toggle();
+	});
+
+* Burada dikkat etmemiz gereken durum butonun click olayını parantez içine 
+almamızdır 
+
+
+37- Submit Metodu 
+----------------------------------------------------- 
+
+* Form alanlarının submit edilmesinde kullanılan metoddur 
+* Form elemanlarının değerlerini de kontrol edebiliriz submit etmeden 
+* Bir butonumuz , form alanımız ve içinde input tagımız olsun 
+* Butona basıldığında input alanını kontrol edip submitleyelim 
+
+	$("buton").click( function () {
+		$("form").submit( function (){
+			var deger = $("input").val();
+			
+			if(deger === " " ){
+				alert(" BOŞ DEĞER ");
+				return false;			
+			}
+			return true;			
+		}).submit();	
+	});
+
+
+38- Ajax Post Metodu ile Veri Çekme 
+----------------------------------------------------- 
+
+* Web sayfasına gönderilebilen istek türlerinden birini oluşturmaya
+yarar 
+* Local yada gerçek sunucu kullanabiliriz 
+* Localde bir örnek yapalım 
+* Bunun apache ve php kurulumunuzun yapılmış olması gerekiyor 
+* Genel olarak xampp gibi bir araçla bunları kolaylıkla yapabilirsiniz 
+* Sunucu klasörümüzde JQuery adında bir dosya açalım 
+* Burada da bir index.html ve ajax.php dosyaları oluşturalım 
+* Html dosyamız içerisinde bir buton oluşturacağız 
+* Aynı zamanda jquery kodlarımızı script içerisinde burada yazıp
+php dosyamızdan veri çekelim sonra da bir div nesnesine yazdıralım 
+* Php dosyamızda sadece echo " örnek yazsın "
+* Php dosyası ; 
+
+	<?php 
+   	echo " Örnek " ;
+	?>
+
+* Html dosyası JQuery kısmı ;
+
+	<script type="text/javascript">
+      $(function(){
+
+         $("button").click(function(){
+            $.post("ajax.php", function(response){
+               $("#sonuc").html(response);
+            });
+         });
+
+      });
+   </script>
+
+* Html dosyası kalan kısımlar ;
+
+	<body>
+   	<button>AJAX İSTEĞİNİ BAŞLAT</button>
+   	<div id="sonuc"> </div>
+	</body>
+
+* Burada butona tıkladığımızda post isteğimiz php dosyamıza gitti
+* Verileri response halinde aldık 
+* En son sonuc divimize atadık
+
+
+39- Ajax Post Metodu ile Veri Yazma 
+----------------------------------------------------- 
+
+* Öncelikle php dosyamızı düzenleyip post metoduyla aldıklarımızı 
+bir değişkene atayalım 
+* Sonra da değişkeni echoya atalım 
+* Html dosyamıza da postta göndermek istediğimiz verileri gireceğimiz
+bir input alanı oluşturalım
+* Post metodunda fonksiyondan önce göndereceğimiz veriyi { } içerisinde
+girmeyi unutmayalım  
+
+* Php dosyası güncel hali ;
+
+	<?php 
+		$q = $_POST["q"];
+   	echo $q;
+	?>
+
+* Html dosyamızda jquery kısmı güncel hali ;
+
+	<script type="text/javascript">
+   
+      $(function(){
+         
+         $("button").click(function(){
+            var q = $("input[name=q]").val();
+            $.post("ajax.php",{"q ":q} ,function(response){
+               $("#sonuc").html(response);
+            });
+
+         });
+
+      });
+   
+   </script>
+
+* Html dosyamızda kalan kısımlar  ;   
+
+	<body>
+   	<input type="text" name="q"/>
+   	<button>AJAX İSTEĞİNİ BAŞLAT</button>
+   	<div id="sonuc"> </div>
+	</body>
+
+ 
+40- Ajax Get Metodu
+----------------------------------------------------- 
+
+* Post metodundan bir farkı yoktur 
+* Aynı işlemleri yaptırmak için post yazan alanları get ile
+değiştirebiliriz 
+* Farklı olan tek şey veri iletişimi yöntemidir 
+* Dikkat etmemiz gereken nokta şudur ki verileri nasıl hangi 
+metodla gönderiyorsak  o metodla almalıyız 
+
+
+41- Ajax Metodu 
+-----------------------------------------------------
+
+* Post ve Get dışında bir de genel bir ajax metodu bulunuyor
+* Bir örnekle veri gönderip response dinleyelim 
+
+	$ajax({
+		url: "ajax.php",
+		type: "POST",
+		data: {"kullaniciAdi" : "FY" , "parola" : "123"},
+		dataType: "json",
+
+		success: function(response){
+			alert("Başarılı İstek : ",response);
+		},
+
+		error : function(response){
+			alert("Başarısız İstek : ",response);
+		},
+
+		statusCode {
+			404 : function(){
+				alert("Dosya Bulunamadı..");
+			}
+		}
+	});
+
+* Bu kısmı özetleyecek olursak ajax metodu içerisinde 
+genel olarak sunucu adresini url içinde , veri alışveriş şeklini type 
+içerisinde , verilerimizi  datada , gönderdiğimiz veya aldığımız verinin
+tipini ise dataType içerisinde yazarız 
+* Son olarak sunucunun bize gönderdiği cevabı da tabi bir callback şeklinde 
+fonksiyon içinde alırız 
+* Örnek olması için bunu success metodu içerisinde gösterdik 
+* Bunun anlamı ajax isteğinin başarılı olması durumunda yapılacaklar manasına
+gelmektedir 
+* Bu response u istediğimiz gibi kullanabiliriz 
+* success dışında error metodu da bulunuyor 
+* İsteğin başarısız olduğu durumu kontrol etmek istiyorsak kullanabiliriz
+* statusCode ile hata koduna göre işlem yapmamız örnekte olduğu gibi mümkün hale 
+geliyor
+
+
+42- Stop Metodu 
+-----------------------------------------------------
+
+* Çalışan bir metodu durdurmak için kullanılır 
+* Örnek olarak bir toggle olayı çalıştıran butona ard arda hızlıca 
+tıklarsan mouse u buton üzerinden çektiğimizde toggle olayı çalışmaya
+devam eder 
+* Bu tip aksiliklerin önüne stop metoduyla geçebiliriz
+* İki tane divimiz olsun birinin classı 'ac' diğerinin 'kutu' olsun
+* ac divine tıkladığımızda kutu divine slideToggle uygulansın
+* Ama belirttiğimiz aksiliğin önüne geçelim 
+
+	$("div.ac").click(function(){
+			$("div.kutu").stop().slideToggle();
+	});
+
+
+43- :Contains Filtresi
+-----------------------------------------------------
+
+* İçerisine girdiğimiz kelimenin nesne içinde olup olmadığını kontrol
+eden filtredir 
+* Bir liste oluşturup içine meyve isimleri yazalım
+* Sonra da bu listede elma kelimelerini bulup arka plan renklerini
+değiştirelim
+
+	<ul class="filtreMeselesi"> 
+		<li>Elma</li>
+		<li>Vişne</li>
+		<li>Armut</li>
+	</ul>
+
+* Bu kısım liste alanımız ve class olarak filtreMeselesi verdik
+* Şimdi jquery kodlarımızı yazalım 
+
+	$("ul.filtreMeselesi li:contains('Elma')").css("color","green");
+
+
+44- isNumeric Metodu
+-----------------------------------------------------
+
+* Verinin sayısal olup olmadığını kontrol eden metoddur 
+* Name'i 'sayi' olan input alanındaki veriyi kontrol edelim
+
+	$("#btn").click(function(){
+		var sayi = $("input[name=sayi]").val();
+		if($.isNumeric(sayi)){
+			alert("Girdiğiniz veri nümeriktir");
+		}
+	})
